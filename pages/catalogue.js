@@ -28,7 +28,7 @@ const Catalogue = ({ allDatasets }) => {
                     </Col>
                 </Row>
                 <Row spacing={"my-8w"}>
-                    <FiltersBoard />
+                    <FiltersBoard datasetsCount={howManyJsonElements(allDatasets)} />
                 </Row>
                 {allDatasets.map((dataset) => <p>{dataset.name}</p>)}
             </Container>
@@ -39,6 +39,7 @@ const Catalogue = ({ allDatasets }) => {
 export default Catalogue;
 
 import { getAllDatasets } from '../lib/datasets.js'
+import { howManyJsonElements } from '../lib/utils';
 
 export async function getServerSideProps() {
     const allDatasets = await getAllDatasets()
