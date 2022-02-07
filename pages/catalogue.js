@@ -1,5 +1,4 @@
 import styles from '../styles/catalogue.module.css'
-
 import Head from 'next/head';
 import Layout from '../components/layout/Layout';
 import {
@@ -9,8 +8,15 @@ import {
     Text
 } from '@dataesr/react-dsfr';
 import FiltersBoard from '../components/filters/FiltersBoard';
+import { howManyJsonElements } from '../lib/utils'
 
-const Catalogue = ({ allDatasets }) => {
+const Catalogue = ({ allDatasets, allFilters }) => {
+
+    const filters = (filters) => {
+        console.log(filters);
+        return filters;
+    }
+
     return (
         <Layout>
             <Head>
@@ -28,7 +34,7 @@ const Catalogue = ({ allDatasets }) => {
                     </Col>
                 </Row>
                 <Row spacing={"my-8w"}>
-                    <FiltersBoard datasetsCount={howManyJsonElements(allDatasets)} />
+                    <FiltersBoard datasetsCount={howManyJsonElements(allDatasets)} allFilters={allFilters} />
                 </Row>
                 {allDatasets.map((dataset) => <p>{dataset.name}</p>)}
             </Container>
@@ -39,13 +45,15 @@ const Catalogue = ({ allDatasets }) => {
 export default Catalogue;
 
 import { getAllDatasets } from '../lib/datasets.js'
-import { howManyJsonElements } from '../lib/utils';
+import { getAllFilters } from '../lib/filters';
 
 export async function getServerSideProps() {
     const allDatasets = await getAllDatasets()
+    const allFilters = await getAllFilters()
     return {
         props: {
-            allDatasets
+            allDatasets,
+            allFilters
         }
     }
 }
