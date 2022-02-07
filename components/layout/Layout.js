@@ -3,7 +3,7 @@ import Head from 'next/head'
 // import styles from './layout.module.css'
 // import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
-import HeaderWrapper from '../components/header/header';
+import HeaderWrapper from '../header/HeaderWrapper';
 
 const Layout = ({ children, home }) => {
     return (

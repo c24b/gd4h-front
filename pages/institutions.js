@@ -1,10 +1,11 @@
 import React from 'react';
+import Layout from '../components/layout/Layout';
 
 const Institutions = () => {
     return (
-        <div>
+        <Layout>
             Institutions
-        </div>
+        </Layout>
     );
 };
 

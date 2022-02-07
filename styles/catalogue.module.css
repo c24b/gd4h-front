@@ -1,0 +1,15 @@
+.subtitle {
+    width: 70%;
+}
+
+.lastUpdateContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.lastUpdate{
+    width: 40%;
+    text-align: right;
+    font-weight: 600;
+}

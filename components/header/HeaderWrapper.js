@@ -7,10 +7,7 @@ import {
     HeaderNav,
     Logo,
     NavItem,
-    NavSubItem,
-    ToolItemGroup,
-    MegaNavItem,
-    MegaNavSubItem,
+    ToolItemGroup
 } from '@dataesr/react-dsfr';
 
 
@@ -34,7 +31,7 @@ const HeaderWrapper = () => {
             <HeaderNav>
                 <NavItem title='A propos' link='/' />
                 <NavItem title='Institutions' link='/institutions' />
-                <NavItem title='Jeux de données' link='/jeux-de-donnees' />
+                <NavItem title='Catalogue' link='/catalogue' />
                 <NavItem title='Référentiels' link='/referentiels' />
             </HeaderNav>
         </Header>
