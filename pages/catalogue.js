@@ -10,7 +10,7 @@ import {
 } from '@dataesr/react-dsfr';
 import FiltersBoard from '../components/filters/FiltersBoard';
 
-const Catalogue = () => {
+const Catalogue = ({ allDatasets }) => {
     return (
         <Layout>
             <Head>
@@ -27,12 +27,24 @@ const Catalogue = () => {
                         <Text size="sm">07/02/2022</Text>
                     </Col>
                 </Row>
-                <Row>
+                <Row spacing={"my-8w"}>
                     <FiltersBoard />
                 </Row>
+                {allDatasets.map((dataset) => <p>{dataset.name}</p>)}
             </Container>
         </Layout>
     );
 };
 
 export default Catalogue;
+
+import { getAllDatasets } from '../lib/datasets.js'
+
+export async function getServerSideProps() {
+    const allDatasets = await getAllDatasets()
+    return {
+        props: {
+            allDatasets
+        }
+    }
+}

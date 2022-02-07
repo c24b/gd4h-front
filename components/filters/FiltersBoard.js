@@ -8,7 +8,7 @@ const FiltersBoard = () => {
             <Container>
                 <Row><h4>Jeux de données environnementales</h4></Row>
                 <Row>
-                    <Col n="12">
+                    <Col n="12" spacing="p-4w">
                         <SearchBar
                             onSearch={() => { }}
                             label="Searchbar Label"
@@ -16,9 +16,13 @@ const FiltersBoard = () => {
                             buttonLabel="Search button"
                         />
                     </Col>
+                </Row>
+                <Row>
+                    <Col>
+
+                    </Col>
                     <Col></Col>
                 </Row>
-                <Row></Row>
                 <Row></Row>
                 <Row></Row>
                 <Row></Row>
