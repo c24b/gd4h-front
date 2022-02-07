@@ -8,6 +8,7 @@ import {
     Col,
     Text
 } from '@dataesr/react-dsfr';
+import FiltersBoard from '../components/filters/FiltersBoard';
 
 const Catalogue = () => {
     return (
@@ -25,6 +26,9 @@ const Catalogue = () => {
                         <Text size="sm" className={styles.lastUpdate}>Dernière mise à jour du catalogue du Green Data for Health</Text>
                         <Text size="sm">07/02/2022</Text>
                     </Col>
+                </Row>
+                <Row>
+                    <FiltersBoard />
                 </Row>
             </Container>
         </Layout>
