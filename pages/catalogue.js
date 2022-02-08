@@ -7,10 +7,30 @@ import {
     Col,
     Text
 } from '@dataesr/react-dsfr';
+import { useEffect } from 'react';
+import DatasetCard from '../components/datasets/DatasetCard';
 import SearchBoard from '../components/search/SearchBoard';
 import { howManyJsonElements } from '../lib/utils'
+import { DataContext } from '../context/DataProvider';
+import { useContext } from 'react';
+import { getAllDatasets } from '../lib/datasets.js'
+import { BASE_URL, DATASETS } from '../dictionnary/url';
 
-const Catalogue = ({ allDatasets, allFilters }) => {
+const Catalogue = ({ allFilters }) => {
+
+    const { currentDatasets } = useContext(DataContext);
+    const [allDatasets, setAllDatasets] = useState([]);
+
+    // currentDatasets.setDatasets(allDatasets);
+    // console.log(currentDatasets.datasets);
+
+    useEffect(() => {
+        fetch(`${CORS_ANYWHERE}/${BASE_URL}/${DATASETS}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setAllDatasets(data)
+            })
+    }, [])
 
     const generateDatasetsCards = (allDatasets) => {
         return (
@@ -51,16 +71,16 @@ const Catalogue = ({ allDatasets, allFilters }) => {
 
 export default Catalogue;
 
-import { getAllDatasets } from '../lib/datasets.js'
 import { getAllFilters } from '../lib/filters';
-import DatasetCard from '../components/datasets/DatasetCard';
+import { useState } from 'react';
+import { CORS_ANYWHERE } from '../dictionnary/temporary';
+
+
 
 export const getServerSideProps = async () => {
-    const allDatasets = await getAllDatasets()
-    const allFilters = await getAllFilters()
+    const allFilters = await getAllFilters();
     return {
         props: {
-            allDatasets,
             allFilters
         }
     }
