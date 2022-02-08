@@ -12,6 +12,12 @@ import { howManyJsonElements } from '../lib/utils'
 
 const Catalogue = ({ allDatasets, allFilters }) => {
 
+    const generateDatasetsCards = (allDatasets) => {
+        return (
+            allDatasets.map((dataset) => <DatasetCard dataset={dataset} key={dataset._id} />)
+        )
+    }
+
     return (
         <Layout>
             <Head>
@@ -21,17 +27,23 @@ const Catalogue = ({ allDatasets, allFilters }) => {
                 <Row spacing="mt-6w">
                     <Col>
                         <h1>Catalogue</h1>
-                        <Text side="md" className={styles.subtitle}>des jeux de données environnementales destinés à un usage en santé-environnement</Text>
+                        <Text side="md" className={styles.subtitle}>
+                            des jeux de données environnementales destinés à un usage en santé-environnement
+                        </Text>
                     </Col>
                     <Col className={styles.lastUpdateContainer}>
-                        <Text size="sm" className={styles.lastUpdate}>Dernière mise à jour du catalogue du Green Data for Health</Text>
+                        <Text size="sm" className={styles.lastUpdate}>
+                            Dernière mise à jour du catalogue du Green Data for Health
+                        </Text>
                         <Text size="sm">07/02/2022</Text>
                     </Col>
                 </Row>
                 <Row spacing={"my-8w"}>
-                    <SearchBoard datasetsCount={howManyJsonElements(allDatasets)} allFilters={allFilters} />
+                    <SearchBoard
+                        datasetsCount={howManyJsonElements(allDatasets)} allFilters={allFilters}
+                    />
                 </Row>
-                {allDatasets.map((dataset) => <DatasetCard dataset={dataset} key={dataset._id} />)}
+                {generateDatasetsCards(allDatasets)}
             </Container>
         </Layout>
     );
@@ -43,7 +55,7 @@ import { getAllDatasets } from '../lib/datasets.js'
 import { getAllFilters } from '../lib/filters';
 import DatasetCard from '../components/datasets/DatasetCard';
 
-export async function getServerSideProps() {
+export const getServerSideProps = async () => {
     const allDatasets = await getAllDatasets()
     const allFilters = await getAllFilters()
     return {

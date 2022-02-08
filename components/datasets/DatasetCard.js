@@ -5,17 +5,13 @@ import { displayWordsWithPipes } from '../../lib/utils';
 import styles from './DatasetCard.module.css';
 import utilStyles from '../../styles/utils.module.css';
 import Link from 'next/link';
+import { LANGUAGE } from '../../dictionnary/temporary';
 
 const DatasetCard = ({ dataset }) => {
 
-    /**
-     * ! Temporary
-     */
-    const language = "fr";
-
     const displayAllOrganizationsNames = (organizations) => {
         const names = organizations.map(org => {
-            return org ? org[language].name : "-"
+            return org ? org[LANGUAGE].name : "-"
         });
         return names;
     }

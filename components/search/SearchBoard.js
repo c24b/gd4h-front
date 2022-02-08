@@ -9,9 +9,12 @@ const SearchBoard = ({ datasetsCount, allFilters }) => {
     return (
         <section id={styles.filtersBoardContainer} className={utilStyles.boxShadow}>
             <Container spacing={"p-4w"}>
-                <Row><h4>Jeux de données environnementales<sup id={styles.datasetsCount}>&nbsp;({datasetsCount})</sup></h4></Row>
                 <Row>
-                    <Col n="12" spacing="p-4w">
+                    <h4>Jeux de données environnementales<sup id={styles.datasetsCount}>&nbsp;({datasetsCount})</sup>
+                    </h4>
+                </Row>
+                <Row>
+                    <Col n={"12"} spacing="p-4w">
                         <SearchBar />
                     </Col>
                 </Row>

@@ -2,3 +2,8 @@
     border-radius: 1rem;
     width: 100%;
 }
+
+#datasetsCount {
+    font-size: 0.6em;
+    font-style: italic;
+}
