@@ -1,5 +1,27 @@
-/* Colors */
+/* Helpers */
+
+.noHorizontalPadding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.textAlignRight {
+    text-align: right;
+}
+
+/* Custom styles */
 
 .boxShadow {
     box-shadow:  13px 16px 5px -6px#E7E7E7;
 }
+
+.bold {
+    font-weight: 600;
+}
+
+/* DSFR */
+
+.blueFrance {
+    color: #000091
+}
+
