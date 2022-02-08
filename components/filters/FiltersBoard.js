@@ -1,17 +1,55 @@
-import { Checkbox, CheckboxGroup, Col, Container, Radio, RadioGroup, Row, SearchBar, Select } from '@dataesr/react-dsfr';
+import { Checkbox, CheckboxGroup, Col, Container, Radio, RadioGroup, Row, SearchBar, Select, Toggle } from '@dataesr/react-dsfr';
+import { useState } from 'react';
 import utilStyles from '../../styles/utils.module.css';
 import styles from './FiltersBoard.module.css';
 
 const FiltersBoard = ({ datasetsCount, allFilters }) => {
 
-    const chooseInput = (input) => {
-        if (input.is_bool) {
-            return buildRadioInput(input)
-        }
-        if (input.is_multiple && !temporaryPatch(input.name)) {
-            return buildCheckboxInput(input)
-        } else {
-            return buildSelectInput(input)
+    const displayLayout = (allFilters) => {
+        const { toggleFilters, checkboxFilters, selectFilters } = organizeLayout(allFilters);
+        return (
+            <Row>
+                <Col spacing={"p-4w"} n={"8"}>
+                    <Row spacing={"mb-6w"}>
+                        <Col>
+                            {selectFilters.map(input => <>{input}</>)}
+                        </Col>
+                    </Row>
+                    <Row className={utilStyles.noWrap}>
+                        <Col>
+                            {toggleFilters.map(input => <>{input}</>)}
+                        </Col>
+                    </Row>
+                </Col>
+                <Col spacing={"p-4w"}>
+                    {checkboxFilters.map(input => <>{input}</>)}
+                </Col>
+            </Row>
+        )
+    }
+
+    const organizeLayout = (allFilters) => {
+        const toggleFilters = [];
+        const checkboxFilters = [];
+        const selectFilters = [];
+
+        if (allFilters) {
+            allFilters.forEach(filter => {
+                if (filter.is_bool) {
+                    toggleFilters.push(buildToggleInput(filter))
+                } else if (filter.is_multiple && !temporaryPatch(filter.name)) {
+                    checkboxFilters.push(buildCheckboxInput(filter))
+                } else {
+                    selectFilters.push(buildSelectInput(filter))
+                }
+            })
+            return (
+                {
+                    toggleFilters,
+                    checkboxFilters,
+                    selectFilters
+                }
+            )
         }
     }
 
@@ -24,19 +62,32 @@ const FiltersBoard = ({ datasetsCount, allFilters }) => {
         return name === "organizations"
     }
 
-    const buildRadioInput = (input) => {
+
+    const [checked, setCheched] = useState(false);
+
+    const buildToggleInput = (input) => {
         return (
-            <RadioGroup
-                legend={input.label}
-            >{input.values.map(inputValue => (
-                <Radio
-                    label={inputValue ? 'Oui' : 'Non'}
-                    value={inputValue}
-                />
-            ))}
-            </RadioGroup>
-        )
+            <Toggle
+                checked={checked}
+                onChange={() => setCheched(!checked)}
+                label={input.label}
+
+            />)
     }
+
+    // const buildRadioInput = (input) => {
+    //     return (
+    //         <RadioGroup
+    //             legend={input.label}
+    //         >{input.values.map(inputValue => (
+    //             <Radio
+    //                 label={inputValue ? 'Oui' : 'Non'}
+    //                 value={inputValue}
+    //             />
+    //         ))}
+    //         </RadioGroup>
+    //     )
+    // }
 
     const buildCheckboxInput = (input) => {
         return (
@@ -69,7 +120,7 @@ const FiltersBoard = ({ datasetsCount, allFilters }) => {
 
     return (
         <section id={styles.filtersBoardContainer} className={utilStyles.boxShadow}>
-            <Container>
+            <Container spacing={"p-4w"}>
                 <Row><h4>Jeux de données environnementales<sup id={styles.datasetsCount}>&nbsp;({datasetsCount})</sup></h4></Row>
                 <Row>
                     <Col n="12" spacing="p-4w">
@@ -81,16 +132,9 @@ const FiltersBoard = ({ datasetsCount, allFilters }) => {
                         />
                     </Col>
                 </Row>
-
-                {allFilters && allFilters.map((filter) => <Row>{chooseInput(filter)}</Row>)}
-                <Col></Col>
-                <Col></Col>
-
-                <Row></Row>
-                <Row></Row>
-                <Row></Row>
+                {displayLayout(allFilters)}
             </Container>
-        </section>
+        </section >
     );
 };
 
