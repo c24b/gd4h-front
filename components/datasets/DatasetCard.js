@@ -4,6 +4,7 @@ import { displayWordsWithPipes } from '../../lib/utils';
 
 import styles from './DatasetCard.module.css';
 import utilStyles from '../../styles/utils.module.css';
+import Link from 'next/link';
 
 const DatasetCard = ({ dataset }) => {
 
@@ -30,13 +31,16 @@ const DatasetCard = ({ dataset }) => {
                         <Col>{displayAllOrganizationsNames(dataset.organizations)}</Col>
                         <Col n={"10"}>{displayWordsWithPipes([dataset.is_opendata ? "Données ouvertes" : "Données non ouvertes",
                         dataset.downloadable ? "Téléchargeable en ligne" : "Non téléchargeable en ligne"])}
-
                         </Col>
                     </Row>
                 </Col>
                 <Col className={utilStyles.textAlignRight}>
                     {/* Icons in dataesr/dsfr are pretty broken for now, so we use remixicon directly instead */}
-                    <ArrowRightLineIcon size={38} className={utilStyles.blueFrance} />
+                    <Link href="" >
+                        <a className={utilStyles.noBoxShadow}>
+                            <ArrowRightLineIcon size={38} className={utilStyles.blueFrance} />
+                        </a>
+                    </Link>
                 </Col>
             </Row>
             <Row spacing={"p-4w"}>

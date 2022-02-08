@@ -1,28 +1,35 @@
-import { Checkbox, CheckboxGroup, Col, Container, Radio, RadioGroup, Row, SearchBar, Select, Toggle } from '@dataesr/react-dsfr';
+import { Checkbox, CheckboxGroup, Col, Row, Select, Toggle } from '@dataesr/react-dsfr';
 import { useState } from 'react';
-import utilStyles from '../../styles/utils.module.css';
-import styles from './FiltersBoard.module.css';
 
-const FiltersBoard = ({ datasetsCount, allFilters }) => {
+const Filters = ({ allFilters }) => {
+
+    // ========================================
+    // ======== Filters layout: start =========
+    // ========================================
 
     const displayLayout = (allFilters) => {
-        const { toggleFilters, checkboxFilters, selectFilters } = organizeLayout(allFilters);
+        const {
+            toggleFilters,
+            checkboxFilters,
+            selectFilters
+        } = organizeLayout(allFilters);
+
         return (
             <Row>
                 <Col spacing={"p-4w"} n={"8"}>
                     <Row spacing={"mb-6w"}>
                         <Col>
-                            {selectFilters.map(input => <>{input}</>)}
+                            {selectFilters.map(filter => <>{filter}</>)}
                         </Col>
                     </Row>
-                    <Row className={utilStyles.noWrap}>
+                    <Row>
                         <Col>
-                            {toggleFilters.map(input => <>{input}</>)}
+                            {toggleFilters.map(filter => <>{filter}</>)}
                         </Col>
                     </Row>
                 </Col>
                 <Col spacing={"p-4w"}>
-                    {checkboxFilters.map(input => <>{input}</>)}
+                    {checkboxFilters.map(filter => <>{filter}</>)}
                 </Col>
             </Row>
         )
@@ -36,11 +43,11 @@ const FiltersBoard = ({ datasetsCount, allFilters }) => {
         if (allFilters) {
             allFilters.forEach(filter => {
                 if (filter.is_bool) {
-                    toggleFilters.push(buildToggleInput(filter))
+                    toggleFilters.push(buildToggleFilter(filter))
                 } else if (filter.is_multiple && !temporaryPatch(filter.name)) {
-                    checkboxFilters.push(buildCheckboxInput(filter))
+                    checkboxFilters.push(buildCheckboxFilter(filter))
                 } else {
-                    selectFilters.push(buildSelectInput(filter))
+                    selectFilters.push(buildSelectFilter(filter))
                 }
             })
             return (
@@ -65,13 +72,12 @@ const FiltersBoard = ({ datasetsCount, allFilters }) => {
 
     const [checked, setCheched] = useState(false);
 
-    const buildToggleInput = (input) => {
+    const buildToggleFilter = (input) => {
         return (
             <Toggle
                 checked={checked}
                 onChange={() => setCheched(!checked)}
                 label={input.label}
-
             />)
     }
 
@@ -89,7 +95,7 @@ const FiltersBoard = ({ datasetsCount, allFilters }) => {
     //     )
     // }
 
-    const buildCheckboxInput = (input) => {
+    const buildCheckboxFilter = (input) => {
         return (
             <CheckboxGroup legend={input.label}>
                 {input.values.map(inputValue => (
@@ -103,7 +109,7 @@ const FiltersBoard = ({ datasetsCount, allFilters }) => {
         )
     }
 
-    const buildSelectInput = (input) => {
+    const buildSelectFilter = (input) => {
         const options = input.values.map(inputValue => (
             {
                 value: inputValue,
@@ -118,24 +124,15 @@ const FiltersBoard = ({ datasetsCount, allFilters }) => {
         )
     }
 
+    // ========================================
+    // ======== Filters layout: end ===========
+    // ========================================
+
     return (
-        <section id={styles.filtersBoardContainer} className={utilStyles.boxShadow}>
-            <Container spacing={"p-4w"}>
-                <Row><h4>Jeux de données environnementales<sup id={styles.datasetsCount}>&nbsp;({datasetsCount})</sup></h4></Row>
-                <Row>
-                    <Col n="12" spacing="p-4w">
-                        <SearchBar
-                            onSearch={() => { }}
-                            label="Searchbar Label"
-                            placeholder="Rechercher"
-                            buttonLabel="Search button"
-                        />
-                    </Col>
-                </Row>
-                {displayLayout(allFilters)}
-            </Container>
-        </section >
+        <>
+            {displayLayout(allFilters)}
+        </>
     );
 };
 
-export default FiltersBoard;
+export default Filters;

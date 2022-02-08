@@ -16,7 +16,13 @@ a {
 
 @font-face {
   font-family: "Marianne";
-  src: url("/fonts/Marianne-Light.woff");
+  src:  url("/fonts/Marianne-Light.woff2") format("woff2"),
+        url("/fonts/Marianne-Light_Italic.woff2") format("woff2"),
+        url("/fonts/Marianne-Medium_Italic.woff2") format("woff2"),
+        url("/fonts/Marianne-Bold_Italic.woff2") format("woff2"),
+        url("/fonts/Marianne-Bold.woff2") format("woff2"),
+        url("/fonts/Marianne-ExtraBold.woff2") format("woff2"),
+        url("/fonts/Marianne-ExtraBold_Italic.woff2") format("woff2"),
 }
 
 

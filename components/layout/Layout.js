@@ -9,10 +9,10 @@ const Layout = ({ children, home }) => {
     return (
         <div>
             <Head>
-                <link rel="icon" href="/favicon.ico" rel="preload"
-                    href="/fonts/Marianne-Bold.woff"
+                {/* <link rel="icon" href="/favicon.ico" rel="preload"
+                    href="/fonts/Marianne-Bold.woff2"
                     as="font"
-                    crossOrigin="" />
+                    crossOrigin="" /> */}
 
                 <meta
                     name="description"

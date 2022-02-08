@@ -7,15 +7,10 @@ import {
     Col,
     Text
 } from '@dataesr/react-dsfr';
-import FiltersBoard from '../components/filters/FiltersBoard';
+import SearchBoard from '../components/search/SearchBoard';
 import { howManyJsonElements } from '../lib/utils'
 
 const Catalogue = ({ allDatasets, allFilters }) => {
-
-    const filters = (filters) => {
-        console.log(filters);
-        return filters;
-    }
 
     return (
         <Layout>
@@ -34,9 +29,9 @@ const Catalogue = ({ allDatasets, allFilters }) => {
                     </Col>
                 </Row>
                 <Row spacing={"my-8w"}>
-                    <FiltersBoard datasetsCount={howManyJsonElements(allDatasets)} allFilters={allFilters} />
+                    <SearchBoard datasetsCount={howManyJsonElements(allDatasets)} allFilters={allFilters} />
                 </Row>
-                {allDatasets.map((dataset) => <DatasetCard dataset={dataset} />)}
+                {allDatasets.map((dataset) => <DatasetCard dataset={dataset} key={dataset._id} />)}
             </Container>
         </Layout>
     );

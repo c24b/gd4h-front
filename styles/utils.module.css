@@ -4,9 +4,9 @@
     width: 100%
 }
 
-.noWrap {
-    flex-wrap: nowrap;
-}
+.noBoxShadow {
+    box-shadow: none !important;
+} 
 
 .noHorizontalPadding {
     padding-left: 0 !important;
