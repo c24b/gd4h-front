@@ -45,12 +45,12 @@ const DatasetCard = ({ dataset }) => {
                     <Row className={styles.description}>{dataset.description}</Row>
                 </Col>
                 <Col n={"4"} className={styles.data} >
-                    <DatasetCardElement label={"Couverture spatiale"} data={"bibibi"} />
-                    <DatasetCardElement label={"Granularité de la couverture spatiale"} data={"blabla"} />
-                    <DatasetCardElement label={"Données géospatialisées"} data={"blabla"} />
+                    <DatasetCardElement label={"Couverture spatiale"} data={dataset.geographical_geospatial_coverage} />
+                    <DatasetCardElement label={"Granularité de la couverture spatiale"} data={displayWordsWithPipes(dataset.geographical_information_level)} />
+                    <DatasetCardElement label={"Données géospatialisées"} data={dataset.is_geospatial_data ? "Oui" : "Non"} />
                 </Col>
                 <Col>
-                    <DatasetCardElement label={"Couverture temporelle"} data={"blabla"} />
+                    <DatasetCardElement label={"Couverture temporelle"} data={`${dataset.year_start} - ${dataset.year_end}`} />
                     <DatasetCardElement label={"Pas de temps"} data={dataset.temporal_scale != "N/A" ? dataset.temporal_scale : "-"} />
                 </Col>
             </Row>
