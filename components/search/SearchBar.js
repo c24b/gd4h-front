@@ -17,9 +17,8 @@ const SearchBar = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(searchQuery);
         const matchingDatasets = await search(searchQuery, LANGUAGE);
-        console.log(matchingDatasets)
+        console.log(matchingDatasets.results)
         setCurrentDatasets(matchingDatasets.results)
         console.log(currentDatasets);
     }

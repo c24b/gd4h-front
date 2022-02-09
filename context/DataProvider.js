@@ -8,13 +8,6 @@ const DataProvider = ({ children }) => {
 
     const [currentDatasets, setCurrentDatasets] = useState([]);
 
-    // const contextValue = {
-    //     currentDatasets: {
-    //         datasets,
-    //         setDatasets
-    //     }
-    // };
-
     return (
         <DataContext.Provider value={currentDatasets}>
             <DataDispatchContext.Provider value={setCurrentDatasets}>

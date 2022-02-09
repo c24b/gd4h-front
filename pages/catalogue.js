@@ -60,7 +60,10 @@ const Catalogue = ({ allFilters }) => {
                         datasetsCount={howManyJsonElements(currentDatasets)} allFilters={allFilters}
                     />
                 </Row>
-                {generateDatasetsCards(currentDatasets)}
+                {currentDatasets.length !== 0 ?
+                    generateDatasetsCards(currentDatasets) :
+                    <GenericError message={NOT_FOUND} />
+                }
             </Container>
         </Layout>
     );
@@ -69,10 +72,8 @@ const Catalogue = ({ allFilters }) => {
 export default Catalogue;
 
 import { getAllFilters } from '../lib/filters';
-import { useState } from 'react';
-import { CORS_ANYWHERE } from '../dictionnary/temporary';
-
-
+import GenericError from '../components/errors/GenericError';
+import { NOT_FOUND } from '../dictionnary/errors';
 
 export const getServerSideProps = async () => {
     const allFilters = await getAllFilters();
