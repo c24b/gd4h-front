@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useContext } from "react";
-import { DataDispatchContext } from "../../context/DataProvider";
+import { DatasetsDispatchContext } from "../../context/DatasetsProvider";
 import { LANGUAGE } from "../../dictionnary/temporary";
 import { searchDatasets } from "../../lib/datasets";
 
 const SearchBar = () => {
 
     const [searchQuery, setSearchQuery] = useState('');
-    const setCurrentDatasets = useContext(DataDispatchContext);
+    const setCurrentDatasets = useContext(DatasetsDispatchContext);
 
     const handleChange = async (event) => {
         setSearchQuery(event.target.value);

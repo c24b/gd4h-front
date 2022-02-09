@@ -11,14 +11,14 @@ import { useEffect } from 'react';
 import DatasetCard from '../components/datasets/DatasetCard';
 import SearchBoard from '../components/search/SearchBoard';
 import { howManyJsonElements } from '../lib/utils'
-import { DataContext, DataDispatchContext } from '../context/DataProvider';
+import { DatasetsContext, DatasetsDispatchContext } from '../context/DatasetsProvider';
 import { useContext } from 'react';
 import { BASE_URL, DATASETS } from '../dictionnary/url';
 
 const Catalogue = ({ allFilters }) => {
 
-    const currentDatasets = useContext(DataContext);
-    const setCurrentDatasets = useContext(DataDispatchContext);
+    const currentDatasets = useContext(DatasetsContext);
+    const setCurrentDatasets = useContext(DatasetsDispatchContext);
 
     useEffect(() => {
         fetch(`${BASE_URL}/${DATASETS}`)

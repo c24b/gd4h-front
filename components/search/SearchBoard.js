@@ -4,8 +4,13 @@ import SearchBar from './SearchBar';
 import utilStyles from '../../styles/utils.module.css';
 import styles from './SearchBoard.module.css';
 import Filters from '../filters/Filters';
+import { SearchResultsContext } from '../../context/SearchResultsProvider';
+import { useContext } from 'react';
 
 const SearchBoard = ({ datasetsCount, allFilters }) => {
+
+    const searchResults = useContext(SearchResultsContext);
+
     return (
         <section id={styles.filtersBoardContainer} className={utilStyles.boxShadow}>
             <Container spacing={"p-4w"}>

@@ -1,11 +1,11 @@
 import '../styles/globals.css'
-import { DataProvider } from '../context/DataProvider';
+import { DatasetsProvider } from '../context/DatasetsProvider';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <DataProvider>
+    <DatasetsProvider>
       <Component {...pageProps} />
-    </DataProvider>)
+    </DatasetsProvider>)
 }
 
 export default MyApp
