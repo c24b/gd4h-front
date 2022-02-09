@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { DatasetsDispatchContext } from "../../context/DatasetsProvider";
+import { SearchResultsDispatchContext } from "../../context/SearchResultsProvider";
 import { LANGUAGE } from "../../dictionnary/temporary";
 import { searchDatasets } from "../../lib/datasets";
 
@@ -8,6 +8,7 @@ const SearchBar = () => {
 
     const [searchQuery, setSearchQuery] = useState('');
     const setCurrentDatasets = useContext(DatasetsDispatchContext);
+    const setSearchResults = useContext(SearchResultsDispatchContext);
 
     const handleChange = async (event) => {
         setSearchQuery(event.target.value);
@@ -15,8 +16,11 @@ const SearchBar = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const matchingDatasets = await searchDatasets(searchQuery, LANGUAGE);
-        setCurrentDatasets(matchingDatasets.results)
+        if (searchQuery != "") {
+            const matchingDatasets = await searchDatasets(searchQuery, LANGUAGE);
+            setSearchResults(matchingDatasets.query);
+            setCurrentDatasets(matchingDatasets.results);
+        }
     }
 
     return (

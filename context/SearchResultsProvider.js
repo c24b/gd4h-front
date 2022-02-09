@@ -6,7 +6,7 @@ const SearchResultsDispatchContext = createContext(undefined);
 
 const SearchResultsProvider = ({ children }) => {
 
-    const [searchResults, setSearchResults] = useState([]);
+    const [searchResults, setSearchResults] = useState('');
 
     return (
         <SearchResultsContext.Provider value={searchResults}>
