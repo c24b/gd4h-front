@@ -1,7 +1,6 @@
 import { Checkbox, CheckboxGroup, Col, Row, Toggle } from '@dataesr/react-dsfr';
 import Select from '../inputs/Select';
 import { useState } from 'react';
-import { getServerSideProps } from '../../pages/catalogue';
 
 const Filters = ({ allFilters }) => {
 
@@ -135,20 +134,6 @@ const Filters = ({ allFilters }) => {
             />)
     }
 
-    // const buildRadioInput = (input) => {
-    //     return (
-    //         <RadioGroup
-    //             legend={input.label}
-    //         >{input.values.map(inputValue => (
-    //             <Radio
-    //                 label={inputValue ? 'Oui' : 'Non'}
-    //                 value={inputValue}
-    //             />
-    //         ))}
-    //         </RadioGroup>
-    //     )
-    // }
-
     const buildCheckboxFilter = (input) => {
         return (
             <CheckboxGroup legend={input.label}>
@@ -174,6 +159,7 @@ const Filters = ({ allFilters }) => {
             <Select
                 label={input.label}
                 options={options}
+                defaultOption={`Sélectionner`}
                 onChange={(e) => { handleChange(e.target.value, input.name) }}
             />
         )
@@ -182,7 +168,7 @@ const Filters = ({ allFilters }) => {
     return (
         <>
             {displayLayout(allFilters)}
-            <div onClick={() => seeBody()}>See</div>
+            <div onClick={() => seeBody()}>Rechercher par filtres</div>
         </>
     );
 };
