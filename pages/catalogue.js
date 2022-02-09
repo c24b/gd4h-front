@@ -11,24 +11,21 @@ import { useEffect } from 'react';
 import DatasetCard from '../components/datasets/DatasetCard';
 import SearchBoard from '../components/search/SearchBoard';
 import { howManyJsonElements } from '../lib/utils'
-import { DataContext } from '../context/DataProvider';
+import { DataContext, DataDispatchContext } from '../context/DataProvider';
 import { useContext } from 'react';
-import { getAllDatasets } from '../lib/datasets.js'
 import { BASE_URL, DATASETS } from '../dictionnary/url';
 
 const Catalogue = ({ allFilters }) => {
 
-    const { currentDatasets } = useContext(DataContext);
-    const [allDatasets, setAllDatasets] = useState([]);
-
-    // currentDatasets.setDatasets(allDatasets);
-    // console.log(currentDatasets.datasets);
+    const currentDatasets = useContext(DataContext);
+    const setCurrentDatasets = useContext(DataDispatchContext);
 
     useEffect(() => {
-        fetch(`${CORS_ANYWHERE}/${BASE_URL}/${DATASETS}`)
+        fetch(`${BASE_URL}/${DATASETS}`)
             .then((res) => res.json())
             .then((data) => {
-                setAllDatasets(data)
+                console.log(data)
+                setCurrentDatasets(data)
             })
     }, [])
 
@@ -60,10 +57,10 @@ const Catalogue = ({ allFilters }) => {
                 </Row>
                 <Row spacing={"my-8w"}>
                     <SearchBoard
-                        datasetsCount={howManyJsonElements(allDatasets)} allFilters={allFilters}
+                        datasetsCount={howManyJsonElements(currentDatasets)} allFilters={allFilters}
                     />
                 </Row>
-                {generateDatasetsCards(allDatasets)}
+                {generateDatasetsCards(currentDatasets)}
             </Container>
         </Layout>
     );

@@ -1,26 +1,27 @@
-import { createContext, useContext } from 'react';
+import { createContext } from 'react';
 import { useState } from 'react';
 
-export const DataContext = createContext();
+const DataContext = createContext(undefined);
+const DataDispatchContext = createContext(undefined);
 
-export const DataProvider = ({ children }) => {
+const DataProvider = ({ children }) => {
 
-    const [datasets, setDatasets] = useState();
+    const [currentDatasets, setCurrentDatasets] = useState([]);
 
-    const contextValue = {
-        currentDatasets: {
-            datasets,
-            setDatasets
-        }
-    };
+    // const contextValue = {
+    //     currentDatasets: {
+    //         datasets,
+    //         setDatasets
+    //     }
+    // };
 
     return (
-        <DataContext.Provider value={contextValue}>
-            {children}
+        <DataContext.Provider value={currentDatasets}>
+            <DataDispatchContext.Provider value={setCurrentDatasets}>
+                {children}
+            </DataDispatchContext.Provider>
         </DataContext.Provider>
     );
 }
 
-export const useAppContext = () => {
-    return useContext(DataContext);
-}
+export { DataProvider, DataContext, DataDispatchContext };
