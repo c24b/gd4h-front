@@ -24,7 +24,6 @@ const Catalogue = ({ allFilters }) => {
         fetch(`${BASE_URL}/${DATASETS}`)
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
                 setCurrentDatasets(data)
             })
     }, [])

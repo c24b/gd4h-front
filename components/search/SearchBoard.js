@@ -11,8 +11,7 @@ const SearchBoard = ({ datasetsCount, allFilters }) => {
     const searchResults = useContext(SearchResultsContext);
 
     const generateTitle = (datasetsCount) => {
-        console.log(searchResults)
-        return searchResults == undefined ?
+        return searchResults == undefined || searchResults == "" ?
             (
                 <h4>
                     Jeux de données environnementales
