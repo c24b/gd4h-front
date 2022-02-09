@@ -52,7 +52,7 @@ const Catalogue = ({ allFilters }) => {
                         <Text size="sm" className={styles.lastUpdate}>
                             Dernière mise à jour du catalogue du Green Data for Health
                         </Text>
-                        <Text size="sm">07/02/2022</Text>
+                        <Text size="sm">{FAKE_DATE}</Text>
                     </Col>
                 </Row>
                 <Row spacing={"my-8w"}>
@@ -74,6 +74,7 @@ export default Catalogue;
 import { getAllFilters } from '../lib/filters';
 import GenericError from '../components/errors/GenericError';
 import { NOT_FOUND } from '../dictionnary/errors';
+import { FAKE_DATE } from '../dictionnary/temporary';
 
 export const getServerSideProps = async () => {
     const allFilters = await getAllFilters();
