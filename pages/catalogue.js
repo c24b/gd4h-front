@@ -7,10 +7,27 @@ import {
     Col,
     Text
 } from '@dataesr/react-dsfr';
+import { useEffect } from 'react';
+import DatasetCard from '../components/datasets/DatasetCard';
 import SearchBoard from '../components/search/SearchBoard';
 import { howManyJsonElements } from '../lib/utils'
+import { DataContext, DataDispatchContext } from '../context/DataProvider';
+import { useContext } from 'react';
+import { BASE_URL, DATASETS } from '../dictionnary/url';
 
-const Catalogue = ({ allDatasets, allFilters }) => {
+const Catalogue = ({ allFilters }) => {
+
+    const currentDatasets = useContext(DataContext);
+    const setCurrentDatasets = useContext(DataDispatchContext);
+
+    useEffect(() => {
+        fetch(`${BASE_URL}/${DATASETS}`)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data)
+                setCurrentDatasets(data)
+            })
+    }, [])
 
     const generateDatasetsCards = (allDatasets) => {
         return (
@@ -40,10 +57,13 @@ const Catalogue = ({ allDatasets, allFilters }) => {
                 </Row>
                 <Row spacing={"my-8w"}>
                     <SearchBoard
-                        datasetsCount={howManyJsonElements(allDatasets)} allFilters={allFilters}
+                        datasetsCount={howManyJsonElements(currentDatasets)} allFilters={allFilters}
                     />
                 </Row>
-                {generateDatasetsCards(allDatasets)}
+                {currentDatasets.length !== 0 ?
+                    generateDatasetsCards(currentDatasets) :
+                    <GenericError message={NOT_FOUND} />
+                }
             </Container>
         </Layout>
     );
@@ -51,16 +71,14 @@ const Catalogue = ({ allDatasets, allFilters }) => {
 
 export default Catalogue;
 
-import { getAllDatasets } from '../lib/datasets.js'
 import { getAllFilters } from '../lib/filters';
-import DatasetCard from '../components/datasets/DatasetCard';
+import GenericError from '../components/errors/GenericError';
+import { NOT_FOUND } from '../dictionnary/errors';
 
 export const getServerSideProps = async () => {
-    const allDatasets = await getAllDatasets()
-    const allFilters = await getAllFilters()
+    const allFilters = await getAllFilters();
     return {
         props: {
-            allDatasets,
             allFilters
         }
     }

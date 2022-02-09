@@ -11,7 +11,7 @@ const DatasetCard = ({ dataset }) => {
 
     const displayAllOrganizationsNames = (organizations) => {
         const names = organizations.map(org => {
-            return org ? org[LANGUAGE].name : "-"
+            return org && org[LANGUAGE] ? org[LANGUAGE].name : "-"
         });
         return names;
     }
