@@ -1,4 +1,4 @@
-import { Checkbox, CheckboxGroup, Col, Row, Toggle } from '@dataesr/react-dsfr';
+import { Button, Checkbox, CheckboxGroup, Col, Row, Toggle } from '@dataesr/react-dsfr';
 import Select from '../inputs/Select';
 import { useState } from 'react';
 import { searchDatasetsByFilters } from '../../lib/datasets';
@@ -178,7 +178,7 @@ const Filters = ({ allFilters }) => {
     return (
         <>
             {displayLayout(allFilters)}
-            <div onClick={() => searchWithFilters(body)}>Rechercher par filtres</div>
+            <Button onClick={() => searchWithFilters(body)}>Rechercher par filtres</Button>
         </>
     );
 };
