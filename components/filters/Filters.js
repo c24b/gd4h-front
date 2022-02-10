@@ -178,8 +178,11 @@ const Filters = ({ allFilters }) => {
     return (
         <>
             {displayLayout(allFilters)}
-            <Button onClick={() => searchWithFilters(body)}>Rechercher par filtres</Button>
+            <Row justifyContent={"right"}>
+                <Button onClick={() => searchWithFilters(body)}>Rechercher par filtres</Button>
+            </Row>
         </>
+
     );
 };
 
