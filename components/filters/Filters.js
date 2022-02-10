@@ -1,9 +1,13 @@
 import { Button, Checkbox, CheckboxGroup, Col, Row, Toggle } from '@dataesr/react-dsfr';
 import Select from '../inputs/Select';
 import { useState } from 'react';
-import { searchDatasetsByFilters } from '../../lib/datasets';
+import { searchDatasetsByFilters, searchDatasetsByFiltersMock } from '../../lib/datasets';
+import { DatasetsDispatchContext } from '../../context/DatasetsProvider';
+import { useContext } from 'react';
 
 const Filters = ({ allFilters }) => {
+
+    const setCurrentDatasets = useContext(DatasetsDispatchContext);
 
     const [body, setBody] = useState({
         organizations: [],
@@ -62,8 +66,13 @@ const Filters = ({ allFilters }) => {
         console.log(body);
         console.log(cleanBody(body));
 
-        const response = await searchDatasetsByFilters(cleanBody(body));
-        console.log(response)
+        /**
+         * ! Temporary, we replace the actual fetch method by an alternative to return a local json mock (while API POST methods do not work)
+         */
+        // const response = await searchDatasetsByFilters(cleanBody(body));
+        const matchingDatasets = await searchDatasetsByFiltersMock(cleanBody(body));
+        console.log(matchingDatasets);
+        setCurrentDatasets(matchingDatasets.results);
     }
 
     const displayLayout = (allFilters) => {
@@ -120,9 +129,7 @@ const Filters = ({ allFilters }) => {
     }
 
     /**
-     * ! We force organizations to be displayed as a select input
-     * ! because it's a very long list, but it should actually be
-     * ! a checklist 
+     * ! We force organizations to be displayed as a select input because it's a very long list, but it should actually be a checklist 
      */
     const temporaryPatch = (name) => {
         return name === "organizations"
