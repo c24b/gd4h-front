@@ -48,12 +48,17 @@ const Filters = ({ allFilters }) => {
         }
     }
 
-    const cleanBody = () => {
-        // make a function to clear all empty or undefined fields from body
+    const cleanBody = (body) => {
+        // Source: https://stackoverflow.com/a/38340730
+        return Object.fromEntries(
+            Object.entries(body)
+                .filter(([_, v]) => v != undefined && v != "" && v != [])
+        );
     }
 
-    const seeBody = () => {
+    const searchWithFilters = (body) => {
         console.log(body);
+        console.log(cleanBody(body));
     }
 
     const displayLayout = (allFilters) => {
@@ -168,7 +173,7 @@ const Filters = ({ allFilters }) => {
     return (
         <>
             {displayLayout(allFilters)}
-            <div onClick={() => seeBody()}>Rechercher par filtres</div>
+            <div onClick={() => searchWithFilters(body)}>Rechercher par filtres</div>
         </>
     );
 };
