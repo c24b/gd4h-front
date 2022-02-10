@@ -7,10 +7,26 @@ import {
     Col,
     Text
 } from '@dataesr/react-dsfr';
+import { useEffect } from 'react';
+import DatasetCard from '../components/datasets/DatasetCard';
 import SearchBoard from '../components/search/SearchBoard';
 import { howManyJsonElements } from '../lib/utils'
+import { DatasetsContext, DatasetsDispatchContext } from '../context/DatasetsProvider';
+import { useContext } from 'react';
+import { BASE_URL, DATASETS } from '../dictionnary/url';
 
-const Catalogue = ({ allDatasets, allFilters }) => {
+const Catalogue = ({ allFilters }) => {
+
+    const currentDatasets = useContext(DatasetsContext);
+    const setCurrentDatasets = useContext(DatasetsDispatchContext);
+
+    useEffect(() => {
+        fetch(`${CORS_ANYWHERE}/${BASE_URL}/${DATASETS}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setCurrentDatasets(data)
+            })
+    }, [])
 
     const generateDatasetsCards = (allDatasets) => {
         return (
@@ -35,15 +51,18 @@ const Catalogue = ({ allDatasets, allFilters }) => {
                         <Text size="sm" className={styles.lastUpdate}>
                             Dernière mise à jour du catalogue du Green Data for Health
                         </Text>
-                        <Text size="sm">07/02/2022</Text>
+                        <Text size="sm">{FAKE_DATE}</Text>
                     </Col>
                 </Row>
                 <Row spacing={"my-8w"}>
                     <SearchBoard
-                        datasetsCount={howManyJsonElements(allDatasets)} allFilters={allFilters}
+                        datasetsCount={howManyJsonElements(currentDatasets)} allFilters={allFilters}
                     />
                 </Row>
-                {generateDatasetsCards(allDatasets)}
+                {currentDatasets.length !== 0 ?
+                    generateDatasetsCards(currentDatasets) :
+                    <GenericError message={NOT_FOUND} />
+                }
             </Container>
         </Layout>
     );
@@ -51,16 +70,15 @@ const Catalogue = ({ allDatasets, allFilters }) => {
 
 export default Catalogue;
 
-import { getAllDatasets } from '../lib/datasets.js'
 import { getAllFilters } from '../lib/filters';
-import DatasetCard from '../components/datasets/DatasetCard';
+import GenericError from '../components/errors/GenericError';
+import { NOT_FOUND } from '../dictionnary/errors';
+import { CORS_ANYWHERE, FAKE_DATE } from '../dictionnary/temporary';
 
 export const getServerSideProps = async () => {
-    const allDatasets = await getAllDatasets()
-    const allFilters = await getAllFilters()
+    const allFilters = await getAllFilters();
     return {
         props: {
-            allDatasets,
             allFilters
         }
     }

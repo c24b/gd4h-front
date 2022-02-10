@@ -1,0 +1,1 @@
+export const NOT_FOUND = "Oops, il semble qu'aucun jeu de données ne correspond à votre recherche 🤷 \nPeut-être pourriez-vous essayer de reformuler ? 🗨️";

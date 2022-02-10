@@ -27,6 +27,12 @@
     font-weight: 600;
 }
 
+.highlight {
+    background-color:yellow;
+    padding: 0.3rem;
+    font-style: italic;
+}
+
 /* DSFR */
 
 .blueFrance {

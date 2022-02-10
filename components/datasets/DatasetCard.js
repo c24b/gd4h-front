@@ -11,7 +11,7 @@ const DatasetCard = ({ dataset }) => {
 
     const displayAllOrganizationsNames = (organizations) => {
         const names = organizations.map(org => {
-            return org ? org[LANGUAGE].name : "-"
+            return org && org[LANGUAGE] ? org[LANGUAGE].name : "-"
         });
         return names;
     }
@@ -54,6 +54,14 @@ const DatasetCard = ({ dataset }) => {
                     <DatasetCardElement label={"Pas de temps"} data={dataset.temporal_scale != "N/A" ? dataset.temporal_scale : "-"} />
                 </Col>
             </Row>
+            {
+                dataset.score &&
+                <Row spacing={"p-4w"}>
+                    <Col>
+                        <span>Match&nbsp;:</span>{' '}{dataset.score}
+                    </Col>
+                </Row>
+            }
 
         </Container >
     );
