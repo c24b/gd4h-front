@@ -1,6 +1,7 @@
 import { Checkbox, CheckboxGroup, Col, Row, Toggle } from '@dataesr/react-dsfr';
 import Select from '../inputs/Select';
 import { useState } from 'react';
+import { searchDatasetsByFilters } from '../../lib/datasets';
 
 const Filters = ({ allFilters }) => {
 
@@ -56,9 +57,13 @@ const Filters = ({ allFilters }) => {
         );
     }
 
-    const searchWithFilters = (body) => {
+    const searchWithFilters = async (body) => {
+
         console.log(body);
         console.log(cleanBody(body));
+
+        const response = await searchDatasetsByFilters(cleanBody(body));
+        console.log(response)
     }
 
     const displayLayout = (allFilters) => {

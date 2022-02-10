@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { DatasetsDispatchContext } from "../../context/DatasetsProvider";
 import { SearchResultsDispatchContext } from "../../context/SearchResultsProvider";
 import { LANGUAGE } from "../../dictionnary/temporary";
-import { searchDatasets } from "../../lib/datasets";
+import { searchDatasetsByKeywords } from "../../lib/datasets";
 
 const SearchBar = () => {
 
@@ -17,7 +17,7 @@ const SearchBar = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (searchQuery != "") {
-            const matchingDatasets = await searchDatasets(searchQuery, LANGUAGE);
+            const matchingDatasets = await searchDatasetsByKeywords(searchQuery, LANGUAGE);
             setSearchResults(matchingDatasets.query);
             setCurrentDatasets(matchingDatasets.results);
         }
