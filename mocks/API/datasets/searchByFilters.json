@@ -1,0 +1,282 @@
+{
+  "results": [
+    {
+      "organizations": [
+        {
+          "id": "6201a8579c42f84fa403a363",
+          "agent_type_uri": "http://purl.org/adms/publishertype/NationalAuthority",
+          "image_url": "https://upload.wikimedia.org/wikipedia/fr/thumb/4/47/Logo_M%C3%A9t%C3%A9o_France_2016.svg/280px-Logo_M%C3%A9t%C3%A9o_France_2016.svg.png",
+          "acronym": "",
+          "name": "Météo France",
+          "agent_type": "Autorité nationale",
+          "organization_type": "EPA",
+          "url": "https://donneespubliques.meteofrance.fr/"
+        }
+      ],
+      "data_domain": "Environnement",
+      "theme_category": "Environnement",
+      "nature": "",
+      "environment": [
+        "Air"
+      ],
+      "subthematic": [
+        "Prévision atmosphérique"
+      ],
+      "exposure_factor_category": [
+        "Facteurs météorologiques",
+        " polluants de l'air"
+      ],
+      "name": "Données de modèle Arpège essentielles OMM",
+      "acronym": "",
+      "description": "Champs d'analyse et de prévision en points de grille issus du modèle de prévision atmosphérique français Arpège sur une grille globale à résolution 2°5. Les données sont réactualisées deux fois par jour, et disponibles jusqu'à 4 jours d’échéance de prévision, par pas de 24 h, au niveau de la mer, 850 et 500 hectopascals (environ 1500 et 5500 mètres d'altitude).",
+      "is_opendata": true,
+      "downloadable": true,
+      "is_geospatial_data": true,
+      "geographical_geospatial_coverage": [
+        "Monde"
+      ],
+      "geographical_information_level": [
+        "Latitude/Longitude"
+      ],
+      "temporal_scale": [
+        "Journalier"
+      ],
+      "id": "6201a8769c42f84fa403a3a0",
+      "_id": "6201a8769c42f84fa403a3a0",
+      "score": "16.6%"
+    },
+    {
+      "organizations": [
+        {
+          "id": "6201a8579c42f84fa403a363",
+          "agent_type_uri": "http://purl.org/adms/publishertype/NationalAuthority",
+          "image_url": "https://upload.wikimedia.org/wikipedia/fr/thumb/4/47/Logo_M%C3%A9t%C3%A9o_France_2016.svg/280px-Logo_M%C3%A9t%C3%A9o_France_2016.svg.png",
+          "acronym": "",
+          "name": "Météo France",
+          "agent_type": "Autorité nationale",
+          "organization_type": "EPA",
+          "url": "https://donneespubliques.meteofrance.fr/"
+        }
+      ],
+      "data_domain": "Environnement",
+      "theme_category": "Environnement",
+      "nature": "",
+      "environment": [
+        "Air"
+      ],
+      "subthematic": [
+        "Prévision atmosphérique"
+      ],
+      "exposure_factor_category": [
+        "Facteurs météorologiques",
+        " polluants de l'air"
+      ],
+      "name": "Données de modèle atmosphérique à aire limitée",
+      "acronym": "",
+      "description": "Champs d'analyse et de prévisions en points de grilles, issus du modèle atmosphérique Aladin sur 5 domaines (France métropolitaine, Antilles-Guyane, Rénuion, Polynésie, Nouvelle-Calédonie). Paramètres, niveaux, échéances et domaines paramétrables selon diverses résolutions et échéances jusqu'à H+84h.",
+      "is_opendata": true,
+      "downloadable": true,
+      "is_geospatial_data": true,
+      "geographical_geospatial_coverage": [
+        "FXX+GLP+MTQ+GUF+REU+PYF+NCL"
+      ],
+      "geographical_information_level": [
+        "Latitude/Longitude"
+      ],
+      "temporal_scale": [
+        "H",
+        " H3"
+      ],
+      "id": "6201a8779c42f84fa403a3a1",
+      "_id": "6201a8779c42f84fa403a3a1",
+      "score": "16.6%"
+    },
+    {
+      "organizations": [
+        {
+          "id": "6201a8579c42f84fa403a363",
+          "agent_type_uri": "http://purl.org/adms/publishertype/NationalAuthority",
+          "image_url": "https://upload.wikimedia.org/wikipedia/fr/thumb/4/47/Logo_M%C3%A9t%C3%A9o_France_2016.svg/280px-Logo_M%C3%A9t%C3%A9o_France_2016.svg.png",
+          "acronym": "",
+          "name": "Météo France",
+          "agent_type": "Autorité nationale",
+          "organization_type": "EPA",
+          "url": "https://donneespubliques.meteofrance.fr/"
+        }
+      ],
+      "data_domain": "Environnement",
+      "theme_category": "Environnement",
+      "nature": "",
+      "environment": [
+        "Air"
+      ],
+      "subthematic": [
+        "Prévision atmosphérique"
+      ],
+      "exposure_factor_category": [
+        "Facteurs météorologiques",
+        " polluants de l'air"
+      ],
+      "name": "Données de modèle de prévision d'ensemble ARPEGE",
+      "acronym": "",
+      "description": "Champs de prévision en points de grille régulière sur différents domaines géographiques issus du modèle de prévision atmosphérique global français Arpege. Données probabilistes constituées de l'ensemble des 35 runs de prévision déterministe à courte échéance. Paramètres, niveaux, échéances et sous-domaines paramétrables selon diverses résolutions et échéances jusqu'à H+108 h maximum par pas de 3 ou 6 h selon le domaine géographique",
+      "is_opendata": true,
+      "downloadable": true,
+      "is_geospatial_data": true,
+      "geographical_geospatial_coverage": [
+        "Monde"
+      ],
+      "geographical_information_level": [
+        "Latitude/Longitude"
+      ],
+      "temporal_scale": [
+        "3h ou 6h"
+      ],
+      "id": "6201a8789c42f84fa403a3a2",
+      "_id": "6201a8789c42f84fa403a3a2",
+      "score": "16.6%"
+    },
+    {
+      "organizations": [
+        {
+          "id": "6201a8579c42f84fa403a363",
+          "agent_type_uri": "http://purl.org/adms/publishertype/NationalAuthority",
+          "image_url": "https://upload.wikimedia.org/wikipedia/fr/thumb/4/47/Logo_M%C3%A9t%C3%A9o_France_2016.svg/280px-Logo_M%C3%A9t%C3%A9o_France_2016.svg.png",
+          "acronym": "",
+          "name": "Météo France",
+          "agent_type": "Autorité nationale",
+          "organization_type": "EPA",
+          "url": "https://donneespubliques.meteofrance.fr/"
+        }
+      ],
+      "data_domain": "Environnement",
+      "theme_category": "Environnement",
+      "nature": "",
+      "environment": [
+        "Air"
+      ],
+      "subthematic": [
+        "Prévision de la chimie atmosphérique et transport"
+      ],
+      "exposure_factor_category": [
+        "Polluants de la intérieur"
+      ],
+      "name": "Modèle global de chimie atmosphérique et de transport",
+      "acronym": "",
+      "description": "Résultats du modèle francais de prévision de composition chimique et de transports atmosphériques (MOCAGE Qualité de l'Air) sous forme de champs de prévisions en points de grille pour 120 espèces gazeuses (Ozone, CO, CO2, U.V. etc.) et 4 aérosols (carbonés, désertiques, anthropiques et marins). Paramètres, niveaux, échéances et domaines paramétrables selon diverses résolutions et échéances de 12 h à 108 h par pas de 1h, 3h ou 6h sur le monde (forçage par un modéle global), ou la France (forçage par un modéle à aire limité)",
+      "is_opendata": true,
+      "downloadable": true,
+      "is_geospatial_data": true,
+      "geographical_geospatial_coverage": [
+        "FRA"
+      ],
+      "geographical_information_level": [
+        "Latitude/Longitude"
+      ],
+      "temporal_scale": [
+        "H",
+        " H3"
+      ],
+      "id": "6201a8889c42f84fa403a3c3",
+      "_id": "6201a8889c42f84fa403a3c3",
+      "score": "16.6%"
+    },
+    {
+      "organizations": [
+        {
+          "id": "6201a8569c42f84fa403a350",
+          "agent_type_uri": "http://purl.org/adms/publishertype/Company",
+          "image_url": "https://upload.wikimedia.org/wikipedia/fr/thumb/b/b2/Ineris-logo.jpg/260px-Ineris-logo.jpg",
+          "acronym": "Institut national de l'environnement industriel et des risques",
+          "name": "INERIS",
+          "agent_type": "Entreprise",
+          "organization_type": "EPIC",
+          "url": "http://ineris.fr"
+        }
+      ],
+      "data_domain": "Environnement",
+      "theme_category": "Environnement",
+      "nature": "",
+      "environment": [
+        "Air"
+      ],
+      "subthematic": [
+        "Qualité de l'air"
+      ],
+      "exposure_factor_category": [
+        "Polluants de l'air"
+      ],
+      "name": "PREV'AIR",
+      "acronym": "PREV'AIR",
+      "description": "Système opérationel de prévision de la qualité de l'air. Modélisation des concentrations d'ozone, NO2, PM10, PM2.5, en moyenne journalière et en pics horaires sur l'Europe et la France",
+      "is_opendata": true,
+      "downloadable": true,
+      "is_geospatial_data": true,
+      "geographical_geospatial_coverage": [
+        "FXX"
+      ],
+      "geographical_information_level": [
+        "lat/long"
+      ],
+      "temporal_scale": [
+        "Journalier"
+      ],
+      "id": "6201a88e9c42f84fa403a3d0",
+      "_id": "6201a88e9c42f84fa403a3d0",
+      "score": "16.6%"
+    },
+    {
+      "organizations": [
+        {
+          "id": "6201a8579c42f84fa403a364",
+          "agent_type_uri": "http://purl.org/adms/publishertype/NationalAuthority",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Minist%C3%A8re_de_la_Transition_%C3%A9cologique.svg/langfr-280px-Minist%C3%A8re_de_la_Transition_%C3%A9cologique.svg.png",
+          "acronym": "Ministère de la Transition Ecologique et Solidaire",
+          "name": "MTES",
+          "agent_type": "Autorité nationale",
+          "organization_type": "Ministère",
+          "url": "https://www.ecologie.gouv.fr/"
+        }
+      ],
+      "data_domain": "Environnement",
+      "theme_category": "Environnement",
+      "nature": "",
+      "environment": [
+        "Sols",
+        " Eau ",
+        " Air"
+      ],
+      "subthematic": [
+        "Emissions polluantes et Déchets"
+      ],
+      "exposure_factor_category": [
+        ""
+      ],
+      "name": "Registre Français des émissions polluantes",
+      "acronym": "IREP",
+      "description": "Ce registre des rejets et des transferts de polluants (RRTP) est un inventaire national :- des substances chimiques et/ou des polluants potentiellement dangereux rejetés dans l'air, l'eau et le sol- de la production et du traitement des déchets dangereux et non dangereuxDéclaration annuelles des déchets et des émissions polluantes dans l'air, l'eau, le sol par les exploitants des installations classées soumises à l'arrêté du 31 janvier 2008 ; Les déclarations portent sur 160 polluants dans l'air et dans l'eau, 130 dans le sol et environ 850 déchets",
+      "is_opendata": true,
+      "downloadable": true,
+      "is_geospatial_data": true,
+      "geographical_geospatial_coverage": [
+        "FRA"
+      ],
+      "geographical_information_level": [
+        "Site (coordonnées x/y)"
+      ],
+      "temporal_scale": [
+        "N/A"
+      ],
+      "id": "6201a8929c42f84fa403a3d6",
+      "_id": "6201a8929c42f84fa403a3d6",
+      "score": "12.92%"
+    }
+  ],
+  "count": 6,
+  "query": {
+    "environment": [
+      "Air"
+    ],
+    "is_opendata": true
+  }
+}
