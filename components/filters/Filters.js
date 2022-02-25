@@ -69,8 +69,8 @@ const Filters = ({ allFilters }) => {
         /**
          * ! Temporary, we replace the actual fetch method by an alternative to return a local json mock (while API POST methods do not work)
          */
-        // const response = await searchDatasetsByFilters(cleanBody(body));
-        const matchingDatasets = await searchDatasetsByFiltersMock(cleanBody(body));
+        const matchingDatasets = await searchDatasetsByFilters(cleanBody(body));
+        //const matchingDatasets = await searchDatasetsByFiltersMock(cleanBody(body));
         console.log(matchingDatasets);
         setCurrentDatasets(matchingDatasets.results);
     }
@@ -129,7 +129,8 @@ const Filters = ({ allFilters }) => {
     }
 
     /**
-     * ! We force organizations to be displayed as a select input because it's a very long list, but it should actually be a checklist 
+     * ! We force organizations to be displayed as a select input because 
+     * it's a very long list, but it should actually be a checklist 
      */
     const temporaryPatch = (name) => {
         return name === "organizations"

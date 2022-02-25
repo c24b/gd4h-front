@@ -7,7 +7,7 @@ const DatasetsDispatchContext = createContext(undefined);
 const DatasetsProvider = ({ children }) => {
 
     const [currentDatasets, setCurrentDatasets] = useState([]);
-
+    console.log(currentDatasets);
     return (
         <DatasetsContext.Provider value={currentDatasets}>
             <DatasetsDispatchContext.Provider value={setCurrentDatasets}>

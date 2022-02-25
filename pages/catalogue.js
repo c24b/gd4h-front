@@ -21,7 +21,7 @@ const Catalogue = ({ allFilters }) => {
     const setCurrentDatasets = useContext(DatasetsDispatchContext);
 
     useEffect(() => {
-        fetch(`${CORS_ANYWHERE}/${BASE_URL}/${DATASETS}`)
+        fetch(`${BASE_URL}/${DATASETS}`)
             .then((res) => res.json())
             .then((data) => {
                 setCurrentDatasets(data)
@@ -72,8 +72,7 @@ export default Catalogue;
 
 import { getAllFilters } from '../lib/filters';
 import GenericError from '../components/errors/GenericError';
-import { NOT_FOUND } from '../dictionnary/errors';
-import { CORS_ANYWHERE, FAKE_DATE } from '../dictionnary/temporary';
+import { NOT_FOUND } from '../dictionnary/errors';import { CORS_ANYWHERE, FAKE_DATE } from '../dictionnary/temporary';
 
 export const getServerSideProps = async () => {
     const allFilters = await getAllFilters();
